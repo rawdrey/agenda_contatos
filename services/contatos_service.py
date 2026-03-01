@@ -1,9 +1,11 @@
 from data.banco import contatos
+from data.arquivo import salvar_contato
 
 
 def contato_existe (nome):
+    nome = nome.strip().lower()
     for c in contatos:
-        if c ["nome"].lower == nome.lower:
+        if c["nome"].strip().lower() == nome:
             return True
     return False
 
@@ -17,6 +19,8 @@ def adcionar_contato(nome,telefone,email):
         "email": email
     }
     contatos.append (contato)
+    salvar_contato (contato)
+
 
 def buscar_contatos(parte_nome):
     resultado = []
