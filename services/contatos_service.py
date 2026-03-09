@@ -9,11 +9,23 @@ def contato_existe (nome):
             return True
     return False
 
+def telefone_existe (telefone):
+    for c in contatos:
+        if c ["telefone"].strip() == telefone:
+            return True
+    return False
+
+
 
 def adcionar_contato(nome,telefone,email):
     if contato_existe (nome):
         raise ValueError ("Contato já cadastrado")
-    contato = {
+    if telefone_existe (telefone):
+        raise ValueError ("Telefone já cadastrado.")
+    
+    
+        contato = {
+
         "nome": nome,
         "telefone": telefone,
         "email": email
