@@ -1,5 +1,5 @@
 from data.banco import contatos
-from data.arquivo import salvar_contato
+from data.arquivo import salvar_contato, reescrever_contatos
 
 
 def contato_existe (nome):
@@ -24,8 +24,7 @@ def adcionar_contato(nome,telefone,email):
         raise ValueError ("Telefone já cadastrado.")
     
     
-        contato = {
-
+    contato = {
         "nome": nome,
         "telefone": telefone,
         "email": email
@@ -45,4 +44,11 @@ def buscar_contatos(parte_nome):
 def listar_contatos():
     return contatos
 
-
+def apagar_contato(nome):
+    nome = nome.strip().lower()
+    for c in contatos:
+        if c ["nome"].strip().lower() == nome:
+            contatos.remove(c)
+            reescrever_contatos(contatos)
+            return
+    raise ValueError("Contato não encontrado. ")

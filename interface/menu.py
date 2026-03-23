@@ -1,7 +1,8 @@
 from services.contatos_service import (
     adcionar_contato,
     buscar_contatos,
-    listar_contatos
+    listar_contatos,
+    apagar_contato
 )
 
 from utils.validacoes import (
@@ -19,6 +20,7 @@ def menu():
         print("1- Adcionar contato")
         print("2- Buscar contato")
         print("3- Listar contatos")
+        print("4- Apagar contato")
         print("0- Sair")
 
         op = input("Escolha: ")
@@ -61,6 +63,11 @@ def menu():
                 else:
                     for c in lista:
                         mostrar_contato(c)
+
+            elif op == "4":
+                nome = input("Digite o nome exato para apagar: ")
+                apagar_contato(nome)
+                print("Contato apagado com sucesso!")
 
             elif op == "0":
                 print("Encerrando...")

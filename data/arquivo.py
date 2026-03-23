@@ -33,3 +33,10 @@ def salvar_contato(contato):
     with open(caminho_arquivo, "a", encoding="utf-8-sig") as f:
         linha = f'{contato["nome"]};{contato["telefone"]};{contato["email"]}\n'
         f.write(linha)
+
+def reescrever_contatos(contatos):
+    with open (caminho_arquivo, "w", encoding="utf-8-sig") as f:
+        f.write("nome;telefone;email\n")
+        for contato in contatos:
+            linha = f'{contato ["nome"]};{contato["telefone"]};{contato["email"]}\n'
+            f.write(linha)
